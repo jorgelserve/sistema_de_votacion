@@ -1,27 +1,30 @@
 {
-  "name": "sistema_de_votacion",
-  "version": "1.0.0",
-  "description": "Sistema de votación para el colegio alcaravanes",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jorgelserve/sistema_de_votacion.git"
-  },
-  "keywords": [
-    "Alcaravanes",
-    "Colegio",
-    "Arduino",
-    "Johnny-five",
-    "Colombia",
-    "Medellin"
-  ],
-  "author": "@jorgelserve <jorgelserve@icloud.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/jorgelserve/sistema_de_votacion/issues"
-  },
-  "homepage": "https://github.com/jorgelserve/sistema_de_votacion#readme"
+	"name": "sistema_de_votacion",
+	"version": "1.0.0",
+	"description": "Sistema de votación para el colegio alcaravanes",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/jorgelserve/sistema_de_votacion.git"
+	},
+	"keywords": [
+		"Alcaravanes",
+		"Colegio",
+		"Arduino",
+		"Johnny-five",
+		"Colombia",
+		"Medellin"
+	],
+	"author": "@jorgelserve <jorgelserve@icloud.com>",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/jorgelserve/sistema_de_votacion/issues"
+	},
+	"homepage": "https://github.com/jorgelserve/sistema_de_votacion#readme",
+	"dependencies": {
+		"johnny-five": "^0.14.1"
+	}
 }
