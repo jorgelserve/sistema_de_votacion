@@ -1,20 +1,18 @@
-var socket = io.connect('http://localhost:8080', { 'forceNew': true })
-moment.locale('es')
+'use strict';
+
+var socket = io.connect('http://181.136.176.132:8080', { 'forceNew': true });
+moment.locale('es');
 
 socket.on('messages', function (data) {
-	console.log(data)
-	render(data)
-})
+	console.log(data);
+	render(data);
+});
 
 function render(data) {
 	var html = data.map(function (element, index) {
-		return(`<div>
-			<strong>${element.author}</strong>: 
-			<em>${element.text}</em>
-			<small>${moment(element.date).fromNow()}</small>
-		</div>`)
-	}).join(" ")
-	document.getElementById('messages').innerHTML = html
+		return '<div>\n\t\t\t<strong>' + element.author + '</strong>: \n\t\t\t<em>' + element.text + '</em>\n\t\t\t<small>' + moment(element.date).fromNow() + '</small>\n\t\t</div>';
+	}).join(" ");
+	document.getElementById('messages').innerHTML = html;
 }
 
 function addMessage(e) {
@@ -22,13 +20,8 @@ function addMessage(e) {
 		author: document.getElementById('username').value,
 		text: document.getElementById('texto').value,
 		date: new Date()
-	}
+	};
 
-	socket.emit('new-message', payload)
-	return false
+	socket.emit('new-message', payload);
+	return false;
 }
-
-
-
-
-

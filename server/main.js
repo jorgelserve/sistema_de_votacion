@@ -1,11 +1,18 @@
 const express = require('express')
 const app = express()
 const server = require('http').Server(app)
-var messages = [{
+var messages = [
+	{
 		text: 'Soy un mensaje',
 		author: '@jorgelserve',
 		date: new Date()
-}]
+	},
+	{
+		text: 'Soy un mensaje',
+		author: '@jorgelserve',
+		date: new Date(12,4, 1992)
+	}
+]
 
 const io = require('socket.io')(server)
 
@@ -27,4 +34,5 @@ io.on('connection', function (socket) {
 
 
 var port = process.env.PORT || 8080
+
 server.listen(port, () => console.log(`escuchando en el puerto ${port}`))
