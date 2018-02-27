@@ -23,5 +23,6 @@ function addMessage(e) {
 	};
 
 	socket.emit('new-message', payload);
+	document.getElementById('form').reset()
 	return false;
 }
