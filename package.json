@@ -4,7 +4,7 @@
 	"description": "Sistema de votación para el colegio alcaravanes",
 	"main": "index.js",
 	"scripts": {
-		"start": "nodemon server/main.js",
+		"start": "node server/main.js",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"repository": {
