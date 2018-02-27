@@ -1,6 +1,6 @@
 'use strict';
 
-var socket = io.connect('http://181.136.176.132:8080', { 'forceNew': true });
+var socket = io.connect('https://hola-mun.herokuapp.com', { 'forceNew': true });
 moment.locale('es');
 
 socket.on('messages', function (data) {
