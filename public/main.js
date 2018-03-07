@@ -1,6 +1,4 @@
-'use strict';
-
-var socket = io.connect('https://hola-mun.herokuapp.com', { 'forceNew': true });
+var socket = io.connect('181.134.144.44:8080', { 'forceNew': true });
 moment.locale('es');
 
 socket.on('messages', function (data) {
@@ -8,12 +6,18 @@ socket.on('messages', function (data) {
 	render(data);
 });
 
-function render(data) {
-	var html = data.map(function (element, index) {
-		return '<div>\n\t\t\t<strong>' + element.author + '</strong>: \n\t\t\t<em>' + element.text + '</em>\n\t\t\t<small>' + moment(element.date).fromNow() + '</small>\n\t\t</div>';
-	}).join(" ");
-	document.getElementById('messages').innerHTML = html;
-}
+socket.on('board-ready', function (data) {
+	console.log(data)
+	swal(
+		'Tarjeta conectada!',
+		`ARDUINO ${data.board} conectada al puerto ${data.port}`,
+		'success'
+	)
+	empty(document.getElementById('container')).innerHTML = ' <button id="button">toggle</button>'
+	document.getElementById('button').addEventListener('click', function (e) {
+		socket.emit('toggle-led', e)
+	})
+})
 
 function addMessage(e) {
 	var payload = {
@@ -25,4 +29,20 @@ function addMessage(e) {
 	socket.emit('new-message', payload);
 	document.getElementById('form').reset()
 	return false;
+}
+
+
+function empty(element) {
+	if (!(element instanceof HTMLElement)) {
+		throw new TypeError('Expected an element')
+	}
+
+	var node
+	while ((node = element.lastChild)) element.removeChild(node)
+	return element
+}
+
+function startTime() {
+	document.getElementById('header').innerHTML = moment().format('MMMM Do YYYY, h:mm:ss a')
+	var t = setTimeout(startTime, 500);
 }
