@@ -1,4 +1,4 @@
-var socket = io.connect('181.134.144.44:8080', { 'forceNew': true });
+var socket = io.connect('http://port-8080.hola-mundo-jorgelserve208343.codeanyapp.com/', { 'forceNew': true });
 moment.locale('es');
 
 socket.on('messages', function (data) {

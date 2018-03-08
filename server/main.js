@@ -1,36 +1,27 @@
 const express = require('express')
 const app = express()
 const server = require('http').Server(app)
-const five = require("johnny-five")
+const five = require('johnny-five')
 const board = new five.Board()
-
-var messages = [
-	{
-		text: 'Soy un mensaje',
-		author: '@jorgelserve',
-		date: new Date()
-	},
-	{
-		text: 'Soy un mensaje',
-		author: '@jorgelserve',
-		date: new Date(12,4, 1992)
-	}
-]
-
 const io = require('socket.io')(server)
 
 app.use(express.static('public'))
 
 app.get('/', function (req, res) {
-	res.status(200).send("Hola mun")
+	res.status(200).send('Hola mun')
 })
 
-
-board.on("ready", function() {
+board.on('ready', function() {
+	var blanco = new five.Button(2)
 	var led = new five.Led(13);
 	io.on('connection', function (socket) {
 		socket.emit('board-ready', {board: board.type , port: board.port})
 
+		blanco.on('down', function() {
+			// console.log('down')
+			socket.emit('voted', 'se ha botado por blanco')
+		})
+	
 		socket.on('toggle-led', function (data) {
 			led.toggle()
 		})
@@ -39,7 +30,7 @@ board.on("ready", function() {
 
 
 //io.on('connection', function (socket) {
-	// board.on("ready", function() {
+	// board.on('ready', function() {
 	// 	socket.emit('boad-ready', {board: board.type , port: board.port} )
 	// })
 	// console.log(`alguien se ha conectado con sockets`)
