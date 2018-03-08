@@ -1,4 +1,4 @@
-var socket = io.connect('http://port-8080.hola-mundo-jorgelserve208343.codeanyapp.com/', { 'forceNew': true });
+var socket = io.connect('http://localhost:8080', { 'forceNew': true });
 moment.locale('es');
 
 socket.on('messages', function (data) {
@@ -7,30 +7,34 @@ socket.on('messages', function (data) {
 });
 
 socket.on('board-ready', function (data) {
-	console.log(data)
+	empty(document.getElementById('container'))
 	swal(
 		'Tarjeta conectada!',
 		`ARDUINO ${data.board} conectada al puerto ${data.port}`,
 		'success'
 	)
-	empty(document.getElementById('container')).innerHTML = ' <button id="button">toggle</button>'
-	document.getElementById('button').addEventListener('click', function (e) {
-		socket.emit('toggle-led', e)
-	})
+	document.getElementById('container').innerHTML = `<div style="text-align: center;">
+		<button class="button" id="iniciar">Iniciar</button>
+		<button class="button" id="continuar">Continuar</button>
+	</div>`
 })
 
-function addMessage(e) {
-	var payload = {
-		author: document.getElementById('username').value,
-		text: document.getElementById('texto').value,
-		date: new Date()
-	};
+document.getElementById('iniciar').addEventListener('click', function () {
+	socket.emit('start', null)
+})
 
-	socket.emit('new-message', payload);
-	document.getElementById('form').reset()
-	return false;
-}
+socket.on('locked', function (data) {
+	data ? document.body.style.backgroundColor = 'red' : document.body.style.backgroundColor = 'initial'
+})
 
+socket.on('voted', function (data) {
+	document.getElementById('container').innerHTML = `<h1 style="text-align: center;">${data}</h1>`
+	console.log(data)
+})
+
+socket.on('down', function (data) {
+	console.log(data)
+})
 
 function empty(element) {
 	if (!(element instanceof HTMLElement)) {
