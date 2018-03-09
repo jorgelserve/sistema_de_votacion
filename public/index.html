@@ -9,6 +9,7 @@
 	<script src="sweetalert2.min.js"></script>
 	<link rel="stylesheet" href="sweetalert2.min.css">
 	<script type="text/javascript" src="moment-with-locales.min.js"></script>
+	<script type="text/javascript" src="canvasjs.min.js"></script>
 </head>
 <body onload="startTime()">
 	<header id="header"></header>
@@ -17,16 +18,15 @@
 			<div class="loader">Loading...</div>
 			<h1 style="text-align: center;">Esperando la targeta</h1>
 		</div>
-		
+		<div style="text-align: center;">
+			<button class="button" id="iniciar">Iniciar</button>
+			<button class="button" id="continuar">Continuar</button>
+	</div>
+
 	</main>
-	<!-- <h1>My app</h1>
-	<div id="messages"></div>
-	<br>
-	<form id="form" onsubmit="return addMessage(this)">
-		<input type="text" id="username" placeholder="Nombre">
-		<input type="text" id="texto" placeholder="Cuentanos algo">
-		<input type="submit" value="Enviar!">
-	</form> -->
+	<footer id="footer">
+		<button id="resultados">Mostrar resusltados</button>
+	</footer>
 	<script type="text/javascript" src="main.js"></script>
 </body>
 </html>
