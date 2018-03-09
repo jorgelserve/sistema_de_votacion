@@ -30,7 +30,5 @@
 		"johnny-five": "^0.14.1",
 		"socket.io": "^2.0.4"
 	},
-	"devDependencies": {
-		"nodemon": "^1.17.1"
-	}
+	"devDependencies": {}
 }
