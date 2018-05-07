@@ -1,3 +1,45 @@
+.election-buttons {
+	margin: 10;
+	padding: 0;
+}
+
+#container {
+	height: 100%;
+	width:100%;
+	font-size: 0;
+}
+
+.normal {
+	font-size: 40px;
+}
+
+.big {
+	font-size: 50px !important;
+}
+
+.left, .center, .right {
+
+    align-items: center;
+	display: inline-block;
+	*display: inline;zoom: 1;
+	vertical-align: top;
+	font-size: 12px;
+	width: 49.5%;
+	height: 300px;
+}
+
+.left {
+	background: #A5B0B0;
+}
+
+.center {
+	width: 1% !important;
+}
+
+.right {
+	background: #A5B0B0;
+}
+
 @font-face {
 	font-family: Arvo;
 	src: url(Arvo-Regular.ttf);
