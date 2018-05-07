@@ -10,7 +10,7 @@ module.exports = async function continuar() {
 		document.getElementById('candidato').addEventListener('click', () => {
 			swal({
 				title: '¿ Esta seguro que desea votar por este candidato ?',
-				text: "Tu voto podrá ser modificado después ",
+				text: "Tu voto no podrá ser modificado después ",
 				type: 'warning',
 				showCancelButton: true,
 				confirmButtonColor: '#3085d6',
@@ -31,7 +31,7 @@ module.exports = async function continuar() {
 		document.getElementById('blanco').addEventListener('click', () => {
 			swal({
 				title: '¿ Esta seguro que desea votar por este candidato ?',
-				text: "Tu voto podrá ser modificado después ",
+				text: "Tu voto no podrá ser modificado después ",
 				type: 'warning',
 				showCancelButton: true,
 				confirmButtonColor: '#3085d6',
